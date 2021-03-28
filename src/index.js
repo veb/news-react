@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./styles/index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
-
+import { ChakraProvider } from "@chakra-ui/react";
 import {
   ApolloProvider,
   ApolloClient,
@@ -22,7 +22,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
   </ApolloProvider>,
   document.getElementById("root")
 );
