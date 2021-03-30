@@ -1,6 +1,19 @@
 import React from "react";
 import Link from "./Link";
-import { Flex, Box, Spacer, SimpleGrid, Grid, HStack } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Spacer,
+  SimpleGrid,
+  Grid,
+  HStack,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  MdCheckCircle,
+} from "@chakra-ui/react";
 import { useQuery, gql } from "@apollo/client";
 
 const FEED_QUERY = gql`
@@ -26,11 +39,11 @@ const LinkList = () => {
   return (
     <Flex>
       {data && (
-        <SimpleGrid columns={2} spacing={5}>
+        <List spacing={3}>
           {links.map((link) => (
             <Link key={link.id} link={link} />
           ))}
-        </SimpleGrid>
+        </List>
       )}
     </Flex>
   );
