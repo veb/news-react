@@ -1,20 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "./Link";
-import {
-  Flex,
-  Box,
-  Spacer,
-  SimpleGrid,
-  Grid,
-  HStack,
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
-  MdCheckCircle,
-} from "@chakra-ui/react";
 import { useQuery, gql } from "@apollo/client";
+import { Container, Button, ListGroup } from "react-bootstrap";
 
 const FEED_QUERY = gql`
   {
@@ -30,22 +17,31 @@ const FEED_QUERY = gql`
 `;
 
 const LinkList = () => {
+  const [links, setLinks] = useState([]);
   const { data } = useQuery(FEED_QUERY);
+
+  if (!data) {
+    throw new Error("No data from Apollo", data);
+  }
+
   console.log("data", data);
 
-  let links = data.feed.links;
+  useEffect(() => {
+    setLinks(data.feed.links);
+  });
+
   console.log("links", links);
 
   return (
-    <Flex>
-      {data && (
-        <List spacing={3}>
+    <React.Fragment>
+      {links && (
+        <ListGroup>
           {links.map((link) => (
             <Link key={link.id} link={link} />
           ))}
-        </List>
+        </ListGroup>
       )}
-    </Flex>
+    </React.Fragment>
   );
 };
 
