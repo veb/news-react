@@ -1,16 +1,15 @@
 import React from "react";
-import { Flex, Box, Spacer, ListItem, ListIcon } from "@chakra-ui/react";
+import ListGroup from "react-bootstrap/ListGroup";
 import { IoIosNavigate } from "react-icons/io";
 
 const Link = (props) => {
   const { link } = props;
 
   return (
-    <ListItem>
-      <ListIcon as={IoIosNavigate} color="green.500" />
-      {link.description}
-      {link.url}
-    </ListItem>
+    <div>
+      <p>{link.description}</p>
+      <p>{link.url}</p>
+    </div>
   );
 };
 
