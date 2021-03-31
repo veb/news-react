@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 import "./styles/index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
-import { ChakraProvider } from "@chakra-ui/react";
 import {
   ApolloProvider,
   ApolloClient,
   createHttpLink,
   InMemoryCache,
 } from "@apollo/client";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const httpLink = createHttpLink({
   uri: "http://graphql.veb:4000/",
@@ -22,9 +22,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
+    <App />
   </ApolloProvider>,
   document.getElementById("root")
 );
