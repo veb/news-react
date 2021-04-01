@@ -11,6 +11,14 @@ const Link = (props) => {
       <p>{link.url}</p>
     </div>
   );
+
+  return (
+    <ListGroup.ListItem>
+      {link.description}
+      <br />
+      {link.url}
+    </ListGroup.ListItem>
+  );
 };
 
 export default Link;
