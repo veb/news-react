@@ -21,7 +21,7 @@ const LinkList = () => {
   const { data } = useQuery(FEED_QUERY);
 
   if (!data) {
-    throw new Error("No data from Apollo", data);
+    throw new Error("No data from Apollos", data);
   }
 
   console.log("data", data);
@@ -33,15 +33,9 @@ const LinkList = () => {
   console.log("links", links);
 
   return (
-    <React.Fragment>
-      {links && (
-        <ListGroup>
-          {links.map((link) => (
-            <Link key={link.id} link={link} />
-          ))}
-        </ListGroup>
-      )}
-    </React.Fragment>
+    <ListGroup>
+      {links && links.map((link) => <Link key={link.id} link={link} />)}
+    </ListGroup>
   );
 };
 
