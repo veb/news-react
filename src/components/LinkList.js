@@ -5,7 +5,7 @@ import { Container, Button, ListGroup } from "react-bootstrap";
 
 const FEED_QUERY = gql`
   {
-    feed(orderBy: { createdAt: asc }) {
+    feed(orderBy: { createdAt: desc }) {
       count
       links {
         id
@@ -20,22 +20,27 @@ const LinkList = () => {
   const [links, setLinks] = useState([]);
   const { data } = useQuery(FEED_QUERY);
 
-  if (!data) {
-    throw new Error("No data from Apollos", data);
-  }
+  // if (!data) {
+  //   throw new Error("No data from Apollo", data);
+  // }
 
-  console.log("data", data);
+  // console.log("data", data);
 
-  useEffect(() => {
-    setLinks(data.feed.links);
-  });
+  // useEffect(() => {
+  //   setLinks(data.feed.links);
+  // });
 
-  console.log("links", links);
+  // console.log("links", links);
 
   return (
-    <ListGroup>
-      {links && links.map((link) => <Link key={link.id} link={link} />)}
-    </ListGroup>
+    <React.Fragment>
+      {data && (
+        <ListGroup>
+          {data.feed.links &&
+            data.feed.links.map((link) => <Link key={link.id} link={link} />)}
+        </ListGroup>
+      )}
+    </React.Fragment>
   );
 };
 
