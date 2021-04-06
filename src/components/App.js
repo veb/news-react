@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// import LinkList from "./LinkList";
 import LinkList from "./LinkList";
+import CreateLink from "./CreateLink";
 import { Container, Button } from "react-bootstrap";
 import { FaThumbsUp } from "react-icons/fa";
 import Logo from "images/logo.png";
@@ -22,7 +22,8 @@ class App extends Component {
               <img width="200px" src={Logo} />
             </a>
           </div>
-          <LinkList />
+          {/* <LinkList /> */}
+          <CreateLink />
           <hr />
           <center>
             <a href="mialto:sup@dankoverflow.com">Contact</a>
